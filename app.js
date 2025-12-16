@@ -199,3 +199,21 @@ app.use((err, req, res, next) => {
   console.error(err)
   res.status(500).json({ errors: ['เกิดข้อผิดพลาดภายในเซิร์ฟเวอร์'] })
 })
+
+// Start Server
+app.listen(PORT, () => {
+  console.log(`
+╔═══════════════════════════════════════════════╗
+║   Product Management API                      ║
+║   Server running on http://localhost:${PORT}    ║
+╚═══════════════════════════════════════════════╝
+
+API Endpoints:
+  POST   /api/products                    - เพิ่มสินค้า
+  GET    /api/products                    - ดึงสินค้าทั้งหมด
+  GET    /api/products?category=อาหาร    - ดึงตามหมวดหมู่
+  POST   /api/products/sell               - ขายสินค้า
+  GET    /api/products/search?keyword=x   - ค้นหาสินค้า
+  PUT    /api/products/bulk-price-update  - อัพเดทราคาชุด
+  `);
+});
